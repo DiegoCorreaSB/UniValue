@@ -77,16 +77,17 @@ function Navigation() {
   return (
     <>
       <header className="flex flex-row justify-between items-center p-4 max-w-[1600px] mx-auto">
-        <section>
-          <h1>UniValue</h1>
+        <section className="flex flex-row gap-4 items-center font-2xl">
+          <span className="flex justify-center bg-[var(--color-primary)] p-1 text-black text-3xl font-black rounded-md w-[40px]" > $ </span>
+          <h1 className="text-[var(--color-primary)] text-3xl">UniValue</h1>
         </section>
         <section>
-          <h3>125 Moedas</h3>
+          <h3 className="text-[var(--color-secondary)]">125 MOEDAS DISPONÍVEIS</h3>
         </section>
       </header>
       <section className="flex flex-row gap-2">
-        <ul className="flex flex-row justify-between items-center text-[15px] bg-[var(--color-bg-secondaty)] gap-x-2 w-full h-13 ">
-          <li className="flex items-center bg-[var(--color-primary)] text-black p-1 h-full">
+        <ul className="flex flex-row justify-between items-center text-[15px] bg-[var(--color-bg-secondary)] gap-x-2 w-full h-13 ">
+          <li className="w-[140px] flex items-center justify-center font-black bg-[var(--color-primary)] text-xs text-black p-1 h-full">
             LIVE MARKETS
           </li>
 
@@ -96,10 +97,18 @@ function Navigation() {
             valueCoin.map((value) => (
               <li
                 key={value.id}
-                className="flex flex-row items-center justify-center p-1 gap-1 h-full "
+                className="flex flex-row items-center justify-center p-1 gap-1 h-full  "
               >
-                <p>{`BRL | ${value.name} ${value.value.toFixed(2)} `}</p>
-                <p
+                {/* IMPRIME O VALOR BRL | USD + VALOR */}
+                <p className="flex flex-col text-center tracking-tighter">
+                  <span className="--color-font">
+                    BRL | {value.name}
+                  </span>
+                  <span className="tracking-widest text-[var(--color-tercery)]">{value.value.toFixed(2)}</span>
+                </p>
+
+                {/* IMPRIME VALORIZAÇÃO DA MOEDA */}
+                < p
                   className={`flex flex-row text-[12px] items-center ${value.appreciation >= 0 ? "text-green-500" : "text-red-500"}`}
                 >
                   {value.appreciation >= 0 ? (
@@ -112,8 +121,8 @@ function Navigation() {
               </li>
             ))
           )}
-        </ul>
-      </section>
+        </ul >
+      </section >
     </>
   );
 }
