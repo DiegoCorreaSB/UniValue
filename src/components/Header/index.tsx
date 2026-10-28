@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ArrowUp, ArrowDown } from "lucide-react";
+import "./header.css";
 
 export interface CoinState {
   id: string;
@@ -39,7 +40,7 @@ function Navigation() {
         const coins = Object.keys(taxas);
         const tempCoin: CoinState[] = [];
 
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < coins.length; i++) {
           const indexRandom = Math.floor(Math.random() * coins.length);
           const coinIndex = coins[indexRandom];
           const currencyName = taxas[coinIndex];
@@ -54,6 +55,8 @@ function Navigation() {
           const appreciation = previousValue
             ? ((currentCurrencyValue - previousValue) / previousValue) * 100
             : 0;
+
+          // console.log(appreciation);
 
           tempCoin.push({
             id: crypto.randomUUID(),
@@ -76,20 +79,30 @@ function Navigation() {
 
   return (
     <>
-      <header className="flex flex-row justify-between items-center p-4 max-w-[1600px] mx-auto">
-        <section className="flex flex-row gap-4 items-center font-2xl">
-          <span className="flex justify-center bg-[var(--color-primary)] p-1 text-black text-3xl font-black rounded-md w-[40px]" > $ </span>
-          <h1 className="text-[var(--color-primary)] text-3xl">UniValue</h1>
+      <header className="flex flex-row gap-2 justify-between items-center p-6 pb-0">
+        <section className="flex flex-row gap-4 font-black text-[var(--color-primary)]  ">
+          <h1 className="text-2xl">UniValue</h1>
         </section>
         <section>
-          <h3 className="text-[var(--color-secondary)]">125 MOEDAS DISPONÍVEIS</h3>
+          <h3 className="font-light text-[var(--color-tercery)] text-[10px]">
+            125 MOEDAS <br /> DISPONÍVEIS
+          </h3>
         </section>
       </header>
-      <section className="flex flex-row gap-2">
-        <ul className="flex flex-row justify-between items-center text-[15px] bg-[var(--color-bg-secondary)] gap-x-2 w-full h-13 ">
-          <li className="w-[140px] flex items-center justify-center font-black bg-[var(--color-primary)] text-xs text-black p-1 h-full">
+
+      <section
+        id="list-live-markets"
+        className="flex flex-row gap-2 justify-between items-center py-2"
+      >
+        <ul
+          className="
+        scrollbar-hide
+        flex flex-row gap-2 overflow-x-auto scrollbar-thin text-[10px] bg-[var(--color-bg-secondary)] font-medium"
+        >
+          <li className="li-livemarket
+           flex justify-center items-center w-fit shrink-0 bg-[var(--color-primary)] font-black text-black p-1">
             LIVE MARKETS
-          </li>
+          </li> 
 
           {loading ? (
             <li>Carregando mercado...</li>
@@ -97,32 +110,32 @@ function Navigation() {
             valueCoin.map((value) => (
               <li
                 key={value.id}
-                className="flex flex-row items-center justify-center p-1 gap-1 h-full  "
+                className="shrink-0 flex flex-row gap-2 items-center p-1 tracking-[3px] border-r border-[var(--color-secondary)]"
               >
                 {/* IMPRIME O VALOR BRL | USD + VALOR */}
-                <p className="flex flex-col text-center tracking-tighter">
-                  <span className="--color-font">
+                <p className="flex flex-row gap-2 items-center">
+                  <span className="text-[var(--color-border)]">
                     BRL | {value.name}
                   </span>
-                  <span className="tracking-widest text-[var(--color-tercery)]">{value.value.toFixed(2)}</span>
-                </p>
+                  <span>{value.value.toFixed(2)}</span>
 
-                {/* IMPRIME VALORIZAÇÃO DA MOEDA */}
-                < p
-                  className={`flex flex-row text-[12px] items-center ${value.appreciation >= 0 ? "text-green-500" : "text-red-500"}`}
-                >
-                  {value.appreciation >= 0 ? (
-                    <ArrowUp size={10} />
-                  ) : (
-                    <ArrowDown size={10} />
-                  )}
-                  {`${Math.abs(value.appreciation).toFixed(2)}%`}
+                  {/* IMPRIME VALORIZAÇÃO DA MOEDA */}
+                  <span
+                    className={`flex flex-row items-center ${value.appreciation >= 0 ? "text-green-500" : "text-red-500"}`}
+                  >
+                    {value.appreciation >= 0 ? (
+                      <ArrowUp className="responsive-arrow" size={16} />
+                    ) : (
+                      <ArrowDown className="responsive-arrow" size={16} />
+                    )}
+                    {`${Math.abs(value.appreciation).toFixed(2)}%`}
+                  </span>
                 </p>
               </li>
             ))
           )}
-        </ul >
-      </section >
+        </ul>
+      </section>
     </>
   );
 }

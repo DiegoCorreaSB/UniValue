@@ -1,0 +1,96 @@
+
+/* TABLET 1024px */
+@media only screen and (min-width: 1023px) and (max-width: 1279px) {
+    header {
+        h1 {
+            font-size: 2.25rem;
+        }
+
+        h3 {
+            font-size: 0.75rem;
+        }
+    }
+
+    #list-live-markets {
+        #coin-value {
+                padding: 0.25rem 0.5rem;
+        }
+
+        ul {
+            li {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    .responsive-arrow {
+        height: 1.2rem;
+        width: 1.2rem;
+    }
+} /* Chave de fechamento da media query corrigida */
+
+@media only screen and (min-width:1280px) {
+
+    #list-live-markets {
+        .li-livemarket {
+            font-size: 0.75rem;
+        }
+
+        #coin-value {
+                padding: 0.25rem 0.5rem;
+        }
+
+        ul {
+
+            li {
+                font-size: 0.75rem;
+            }
+        }
+    }
+
+    .responsive-arrow {
+        height: .80rem;
+        width: .80rem;
+    }
+}
+
+@media only screen and (min-width:1536px) {
+
+    header {
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+        max-width: 1600px;
+
+        h1 {
+            font-size: 2.25rem;
+        }
+
+        h3 {
+            font-size: 0.75rem;
+        }
+    }
+
+    #list-live-markets {
+        .li-livemarket {
+            font-size: 1rem;
+        }
+
+        #coin-value {
+                padding: 0.25rem 0.5rem;
+        }
+
+        ul {
+
+            li {
+                font-size: 0.75rem;
+            }
+        }
+    }
+
+    .responsive-arrow {
+        height: 1rem;
+        width: 1rem;
+    }
+}
+

@@ -4,14 +4,39 @@
 
 :root {
     --color-primary: #00c700;
-    --color-secondary: #36363b;
+    --color-secondary: #4f4f53;
     --color-tercery: #808081;
+
     --color-font: #e7e7e7;
-    --color-bg: #0A0A0A;
+    
+    --color-bg-primary: #0A0A0A;
     --color-bg-secondary: #171719;
+    --color-bg-terciary: #202022;
+    --color-bg-quaternary: #2F2F2F;
+
+    --color-border: #4f4f53
 
 }
 
 * {
     font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+/* No seu arquivo index.css global */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Esconde no Chrome, Safari e Edge */
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* Esconde no IE e Edge antigo */
+    scrollbar-width: none;  /* Esconde no Firefox */
+}
+
+select, 
+option, 
+select *, 
+option * {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
 }
